@@ -31,6 +31,11 @@
             <form action="{% pageurl page %}" method="POST" class="cu-form">
               {% csrf_token %}
               {% antispam_protect %}
+              
+              {% for field in form.hidden_fields %}
+                {{ field }}
+              {% endfor %}
+              
               {{ form|bulma }}
               <div class="cu-form-footer">
                 <button type="submit" class="cu-submit-btn">
